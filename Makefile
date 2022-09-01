@@ -11,8 +11,10 @@ prepare:
 
 build: prepare
 	docker buildx build \
-	--no-cache \
 	--load \
+	--no-cache \
+	--progress plain \
+	--squash \
 	--build-arg TARGETARCH=amd64 \
 	--platform linux/amd64 \
 	-t $(IMAGE_NAME):$(ALPINE_VERSION)-amd64 .
@@ -20,6 +22,8 @@ build: prepare
 	docker buildx build \
 	--load \
 	--no-cache \
+	--progress plain \
+	--squash \
 	--build-arg TARGETARCH=arm32v7 \
 	--platform linux/arm/v7 \
 	-t $(IMAGE_NAME):$(ALPINE_VERSION)-arm32v7 .
@@ -27,6 +31,8 @@ build: prepare
 	docker buildx build \
 	--load \
 	--no-cache \
+	--progress plain \
+	--squash \
 	--build-arg TARGETARCH=arm64v8 \
 	--platform linux/arm64/v8 \
 	-t $(IMAGE_NAME):$(ALPINE_VERSION)-arm64v8 .
