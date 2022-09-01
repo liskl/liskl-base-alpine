@@ -13,4 +13,6 @@ ADD files/alpine-minirootfs-3.16.2-arm64v8.tar.gz /
 ARG TARGETARCH
 FROM base-$TARGETARCH AS release
 
-CMD [ "/bin/sh" ]
+RUN apk add --no-cache bash
+
+CMD [ "/usr/bin/bash" ]
