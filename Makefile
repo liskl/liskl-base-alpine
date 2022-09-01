@@ -3,6 +3,10 @@
 IMAGE_NAME := liskl/base-alpine
 ALPINE_VERSION := 3.16.2
 
+prepare:
+	wget -O files/alpine-minirootfs-$(ALPINE_VERSION)-armv7.tar.gz https://dl-cdn.alpinelinux.org/alpine/v3.16/releases/armv7/alpine-minirootfs-$(ALPINE_VERSION)-armv7.tar.gz
+	wget -O files/alpine-minirootfs-$(ALPINE_VERSION)-armhf.tar.gz https://dl-cdn.alpinelinux.org/alpine/v3.16/releases/armhf/alpine-minirootfs-$(ALPINE_VERSION)-armhf.tar.gz
+	wget -O files/alpine-minirootfs-$(ALPINE_VERSION)-x86_64.tar.gz https://dl-cdn.alpinelinux.org/alpine/v3.16/releases/x86_64/alpine-minirootfs-$(ALPINE_VERSION)-x86_64.tar.gz
 build:
 	docker buildx build \
 	--no-cache \
